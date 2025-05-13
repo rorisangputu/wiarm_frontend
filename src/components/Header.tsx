@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import corn from "../assets/corn_img.png";
 
 const links = [
@@ -12,6 +12,11 @@ const links = [
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  // Define admin pages
+  const adminPaths = ["/admin-signin", "/register", "/api"];
+  const isAdminPage = adminPaths.includes(location.pathname);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +30,9 @@ const Header = () => {
   return (
     <div
       className={`w-full py-7 fixed left-0 z-50 transition-all duration-300 ${
-        scrolled || isOpen ? "bg-white shadow-md mt-[-1]" : "bg-transparent"
+        scrolled || isOpen || isAdminPage
+          ? "bg-white shadow-md mt-[-1]"
+          : "bg-transparent"
       }`}
     >
       <div className="w-[90%] mx-auto ">
@@ -36,7 +43,9 @@ const Header = () => {
             <div className="py-2">
               <h1
                 className={`text-2xl font-light ${
-                  scrolled || isOpen ? "text-gray-900" : "text-white"
+                  scrolled || isOpen || isAdminPage
+                    ? "text-gray-900"
+                    : "text-white"
                 }`}
               >
                 WIARM
@@ -51,7 +60,9 @@ const Header = () => {
                 key={link.title}
                 to={link.url}
                 className={`text-sm font-medium ${
-                  scrolled || isOpen ? "text-gray-900" : "text-white"
+                  scrolled || isOpen || isAdminPage
+                    ? "text-gray-900"
+                    : "text-white"
                 } hover:underline`}
               >
                 {link.title}
@@ -67,7 +78,7 @@ const Header = () => {
             <svg
               className="w-8 h-8"
               fill="none"
-              stroke={scrolled || isOpen ? "black" : "white"}
+              stroke={scrolled || isOpen || isAdminPage ? "black" : "white"}
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -101,7 +112,7 @@ const Header = () => {
                 to={link.url}
                 onClick={() => setIsOpen(false)}
                 className={`block px-4 py-2 ${
-                  scrolled ? "text-gray-800" : "text-gray-800"
+                  scrolled || isAdminPage ? "text-gray-800" : "text-gray-800"
                 } hover:bg-gray-100`}
               >
                 {link.title}
