@@ -1,6 +1,10 @@
-import { SignInFormData } from "./pages/SignIn";
+import { SignInFormData } from "./pages/AdminSignIn";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+
+export type SignInResponse = {
+  admin: string; // Matches { admin: admin._id } from adminLogin
+};
 
 export const validateToken = async () => {
   const response = await fetch(
@@ -14,7 +18,9 @@ export const validateToken = async () => {
   return response.json();
 };
 
-export const signIn = async (formData: SignInFormData) => {
+export const signIn = async (
+  formData: SignInFormData
+): Promise<SignInResponse> => {
   const response = await fetch(`${API_BASE_URL}/api/admin_auth/login`, {
     method: "POST",
     credentials: "include",
