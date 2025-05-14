@@ -1,0 +1,46 @@
+import { useQuery } from "@tanstack/react-query";
+import { useAppContext } from "../../../contexts/appContext";
+import * as apiClient from "../../../apiClient";
+import Button from "../../Button";
+import AdminCampaignTemp from "./AdminCampaignTemp";
+
+const AdminCampaigns = () => {
+  const { showToast } = useAppContext();
+  const { data: campaignData } = useQuery({
+    queryKey: ["getCampaigns"],
+    queryFn: async () => {
+      try {
+        return await apiClient.fetchCampaign();
+      } catch (error) {
+        showToast({ message: "Couldn't get Campaigns", type: "ERROR" });
+        throw error;
+      }
+    },
+  });
+
+  if (!campaignData) {
+    return <span>No Campaigns found.</span>;
+  }
+  return (
+    <div className="flex flex-col gap-5">
+      <div>
+        <Button text="Add Campaign" styles="font-medium " />
+      </div>
+      <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {campaignData.map((campaign) => (
+          <AdminCampaignTemp
+            key={campaign._id}
+            id={campaign._id}
+            title={campaign.title}
+            location={campaign.location}
+            date={campaign.date}
+            description={campaign.description}
+            picture={campaign.image}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default AdminCampaigns;
