@@ -22,7 +22,7 @@ const CampaignTemp = ({
       <div className="p-4 flex flex-col gap-2">
         <h3 className="text-lg md:text-xl font-semibold">{title}</h3>
         <p className="text-sm md:text-md text-gray-600">
-          {location} — {date.toLocaleDateString()}
+          {location} — {new Date(date).toLocaleDateString()}
         </p>
         <p className="text-sm md:text-md text-gray-700">
           {description.substring(0, 100)}...
