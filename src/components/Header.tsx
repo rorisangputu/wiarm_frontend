@@ -15,7 +15,7 @@ const Header = () => {
   const location = useLocation();
 
   // Define admin pages
-  const adminPaths = ["/admin-signin", "/register", "/api"];
+  const adminPaths = ["/admin-signin", "/register", "/api", "/contact"];
   const isAdminPage = adminPaths.includes(location.pathname);
 
   useEffect(() => {
