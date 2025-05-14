@@ -1,67 +1,43 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAppContext } from "../../../contexts/appContext";
 import * as apiClient from "../../../apiClient";
 import { CampaignType } from "../../../../../wiarm_backend/src/shared/types"; // Adjust path if needed
+import { useForm } from "react-hook-form";
 
 // ✅ Define the input type for the form (not to be confused with FormData API)
-interface CampaignFormInput {
+export type CampaignFormData = {
   title: string;
   description: string;
   date: string;
   location: string;
   image: string;
-}
+};
 
-const AddCampaignForm = () => {
-  const { showToast } = useAppContext();
-  const queryClient = useQueryClient();
+type Props = {
+  onSave: (CampaignFormData: FormData) => void;
+  isLoading: boolean;
+  campaign?: CampaignType;
+};
 
-  const [formData, setFormData] = useState<CampaignFormInput>({
-    title: "",
-    description: "",
-    date: "",
-    location: "",
-    image: "",
+const AddCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
+  const formMethods = useForm<CampaignFormData>();
+  const { handleSubmit, reset } = formMethods;
+
+  useEffect(() => {
+    reset(campaign);
+  }, [campaign, reset]);
+
+  const onSubmit = handleSubmit((formDataJSON: CampaignFormData) => {
+    const formData = new FormData();
+    if (campaign) {
+      formData.append("campaignId", campaign._id);
+    }
+    formData.append("title", formDataJSON.title);
+    formData.append("description", formDataJSON.description);
+    formData.append("location", formDataJSON.location);
+    formData.append("date", formDataJSON.date);
   });
-
-  const mutation = useMutation<CampaignType, Error, FormData>({
-    mutationFn: apiClient.createCampaign,
-    onSuccess: () => {
-      showToast({ message: "Campaign created successfully!", type: "SUCCESS" });
-      queryClient.invalidateQueries({ queryKey: ["getCampaigns"] });
-      setFormData({
-        title: "",
-        description: "",
-        date: "",
-        location: "",
-        image: "",
-      });
-    },
-    onError: () => {
-      showToast({ message: "Failed to create campaign.", type: "ERROR" });
-    },
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const formDataToSend = new FormData();
-    formDataToSend.append("title", formData.title);
-    formDataToSend.append("description", formData.description);
-    formDataToSend.append("date", formData.date);
-    formDataToSend.append("location", formData.location);
-    formDataToSend.append("image", formData.image); // if it's a file input, use event.target.files[0]
-
-    mutation.mutate(formDataToSend);
-  };
 
   return (
     <form
