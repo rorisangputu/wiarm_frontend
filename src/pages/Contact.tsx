@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div className="flex flex-col w-full">
       {/* Hero Section */}
-      <div className="relative w-full h-[50vh] md:h-[30vh] flex justify-center items-center text-white">
+      <div className="relative w-full h-[50vh] md:h-[40vh] flex justify-center items-center text-white">
         <img
           src={contact_bg}
           alt="Contact background"
