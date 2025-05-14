@@ -1,4 +1,5 @@
 import { SignInFormData } from "./pages/AdminSignIn";
+import { CampaignType } from "../../wiarm_backend/src/shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
@@ -47,4 +48,16 @@ export const logout = async () => {
   if (!res.ok) {
     throw new Error("Error during sign out");
   }
+};
+
+export const fetchCampaign = async (): Promise<CampaignType[]> => {
+  const response = await fetch(`${API_BASE_URL}/api/campaigns`, {
+    credentials: "include",
+  });
+
+  if (!response.ok) {
+    throw new Error("Unable to fetch campaigns");
+  }
+  const result = await response.json();
+  return result.data;
 };
