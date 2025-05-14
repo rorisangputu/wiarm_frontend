@@ -61,3 +61,17 @@ export const fetchCampaign = async (): Promise<CampaignType[]> => {
   const result = await response.json();
   return result.data;
 };
+
+export const createCampaign = async (
+  campaignFormData: FormData
+): Promise<CampaignType> => {
+  const response = await fetch(`${API_BASE_URL}/api/campaigns/create`, {
+    method: "POST",
+    credentials: "include",
+    body: campaignFormData,
+  });
+  if (!response.ok) {
+    throw new Error("Failed to add hotel");
+  }
+  return response.json();
+};
