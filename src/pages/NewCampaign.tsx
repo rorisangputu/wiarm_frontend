@@ -18,7 +18,11 @@ const NewCampaign = () => {
   const handleSave = (campaignFormData: FormData) => {
     mutate(campaignFormData);
   };
-  return <ManageCampaignForm onSave={handleSave} isLoading={isPending} />;
+  return (
+    <div className="w-full py-32">
+      <ManageCampaignForm onSave={handleSave} isLoading={isPending} />;
+    </div>
+  );
 };
 
 export default NewCampaign;
