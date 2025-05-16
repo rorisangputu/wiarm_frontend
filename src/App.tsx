@@ -80,7 +80,7 @@ function App() {
                   }
                 />
                 <Route
-                  path="/new-campaign"
+                  path="/new"
                   element={
                     <AdminLayout>
                       <NewCampaign />
