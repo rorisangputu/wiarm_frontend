@@ -3,6 +3,7 @@ import { useAppContext } from "../../../contexts/appContext";
 import * as apiClient from "../../../apiClient";
 import Button from "../../Button";
 import AdminCampaignTemp from "./AdminCampaignTemp";
+import { Link } from "react-router-dom";
 
 const AdminCampaigns = () => {
   const { showToast } = useAppContext();
@@ -23,9 +24,9 @@ const AdminCampaigns = () => {
   }
   return (
     <div className="flex flex-col gap-5">
-      <div>
+      <Link to={"/admin/new"}>
         <Button text="Add Campaign" styles="font-medium " />
-      </div>
+      </Link>
       <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {campaignData.map((campaign) => (
           <AdminCampaignTemp
