@@ -4,7 +4,7 @@ interface AdminCampaignProps {
   id: string;
   title: string;
   location: string;
-  date: Date; // assuming string from API
+  date: string; // assuming string from API
   description: string;
   picture: string;
   //onDelete: (id: string) => void;
