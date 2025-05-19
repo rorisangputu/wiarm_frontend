@@ -4,7 +4,7 @@ interface templateProps {
   id: string;
   title: string;
   location: string;
-  date: Date;
+  date: string;
   description: string;
   picture: string;
 }
