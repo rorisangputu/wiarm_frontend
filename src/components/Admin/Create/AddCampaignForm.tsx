@@ -44,7 +44,7 @@ const AddCampaignForm = () => {
           type="date"
           id="date"
           className="border rounded w-full py-2 px-2 mt-3 font-normal"
-          {...register("location", { required: "This field is required" })}
+          {...register("date", { required: "This field is required" })}
         />
         {errors.date && (
           <span className="text-red-700">{errors.date.message}</span>
