@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import AddCampaignForm from "./AddCampaignForm";
 
 export type CampaignFormData = {
+  _id?: string;
   title: string;
   description: string;
   date: string;
@@ -32,10 +33,19 @@ const ManageCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
 
   const onSubmit = (data: CampaignFormData) => {
     const formData = new FormData();
+    if (campaign) {
+      formData.append("campaignId", campaign._id as string);
+    }
     formData.append("title", data.title);
     formData.append("description", data.description);
     formData.append("date", data.date);
     formData.append("location", data.location);
+
+    // Console log FormData contents
+    for (const pair of formData.entries()) {
+      console.log(`${pair[0]}: ${pair[1]}`);
+    }
+
     onSave(formData);
   };
 
