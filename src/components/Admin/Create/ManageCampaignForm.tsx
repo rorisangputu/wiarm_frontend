@@ -26,6 +26,7 @@ const ManageCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
   }, [campaign, reset]);
 
   const onSubmit = handleSubmit((formDataJSON: CampaignFormData) => {
+    console.log("Inside submit");
     const formData = new FormData();
     if (campaign) {
       formData.append("campaignId", campaign._id);
@@ -35,7 +36,11 @@ const ManageCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
     formData.append("location", formDataJSON.location);
     formData.append("date", formDataJSON.date);
 
-    console.log(JSON.stringify(formData));
+    console.log("FormData:");
+    [...formData.entries()].forEach(([key, value]) => {
+      console.log(`${key}: ${value}`);
+    });
+
     onSave(formData);
   });
   return (
