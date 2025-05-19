@@ -1,5 +1,4 @@
-import { FormProvider, useForm } from "react-hook-form";
-import { CampaignType } from "../../../../../wiarm_backend/src/shared/types";
+import { useForm, FormProvider } from "react-hook-form";
 import { useEffect } from "react";
 import AddCampaignForm from "./AddCampaignForm";
 
@@ -8,54 +7,50 @@ export type CampaignFormData = {
   description: string;
   date: string;
   location: string;
-  image: string;
 };
 
 type Props = {
-  onSave: (CampaignFormData: FormData) => void;
+  onSave: (formData: FormData) => void;
   isLoading: boolean;
-  campaign?: CampaignType;
+  campaign?: CampaignFormData;
 };
 
 const ManageCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
-  const formMethods = useForm<CampaignFormData>();
-  const { handleSubmit, reset } = formMethods;
+  const methods = useForm<CampaignFormData>();
+  const { handleSubmit, reset } = methods;
 
   useEffect(() => {
-    reset(campaign);
+    if (campaign) {
+      reset({
+        title: campaign.title || "",
+        description: campaign.description || "",
+        date: campaign.date?.slice(0, 10) || "",
+        location: campaign.location || "",
+      });
+    }
   }, [campaign, reset]);
 
-  const onSubmit = handleSubmit((formDataJSON: CampaignFormData) => {
-    console.log("Inside submit");
+  const onSubmit = (data: CampaignFormData) => {
     const formData = new FormData();
-    if (campaign) {
-      formData.append("campaignId", campaign._id);
-    }
-    formData.append("title", formDataJSON.title);
-    formData.append("description", formDataJSON.description);
-    formData.append("location", formDataJSON.location);
-    formData.append("date", formDataJSON.date);
-
-    console.log("FormData:");
-    [...formData.entries()].forEach(([key, value]) => {
-      console.log(`${key}: ${value}`);
-    });
-
+    formData.append("title", data.title);
+    formData.append("description", data.description);
+    formData.append("date", data.date);
+    formData.append("location", data.location);
     onSave(formData);
-  });
+  };
+
   return (
-    <FormProvider {...formMethods}>
-      <form onSubmit={onSubmit} className="flex flex-col gap-10">
+    <FormProvider {...methods}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Reuse your AddCampaignForm here */}
         <AddCampaignForm />
-        <span className="flex justify-end">
-          <button
-            disabled={isLoading}
-            type="submit"
-            className="p-3 text-white bg-blue-700 hover:bg-blue-600 disabled:bg-gray-400 font-semibold text-xl"
-          >
-            {isLoading ? "Saving..." : "Save"}
-          </button>
-        </span>
+        <button
+          type="submit"
+          className="bg-blue-500 text-white rounded px-4 py-2 mt-4"
+          disabled={isLoading}
+        >
+          {isLoading ? "Saving..." : "Save Campaign"}
+        </button>
       </form>
     </FormProvider>
   );
