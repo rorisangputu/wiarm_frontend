@@ -11,7 +11,7 @@ const AdminCampaigns = () => {
     queryKey: ["getCampaigns"],
     queryFn: async () => {
       try {
-        return await apiClient.fetchCampaign();
+        return await apiClient.fetchCampaigns();
       } catch (error) {
         showToast({ message: "Couldn't get Campaigns", type: "ERROR" });
         throw error;
