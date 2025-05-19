@@ -32,7 +32,7 @@ const AdminCampaignTemp = ({
 
         <div className="flex gap-4 mt-4">
           <Link
-            to={`/admin/edit-campaign/${id}`}
+            to={`/admin/edit/${id}`}
             className="text-blue-600 hover:underline"
           >
             Edit
