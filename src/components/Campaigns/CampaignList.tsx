@@ -23,7 +23,7 @@ const CampaignsList = () => {
 
   //console.log(campaignData.data);
   return (
-    <div className="w-full bg-green-900 py-10 relative overflow-hidden font-sans">
+    <div className="w-full bg-slate-50 py-10 relative overflow-hidden font-sans">
       {/* Background Image Positioned Behind Content */}
       <img
         src={dotted}
@@ -33,10 +33,10 @@ const CampaignsList = () => {
       <div className="w-[90%] mx-auto relative z-10 text-white">
         <div className="flex flex-col gap-10">
           <div className=" flex flex-col items-center md:items-start gap-5">
-            <p className="font-sans text-center md:text-start font-medium text-xl">
+            <p className="font-sans text-center md:text-start font-medium text-xl text-green-900">
               Explore our recent campaigns
             </p>
-            <hr className="w-20" />
+            <hr className="w-20 text-green-900" />
           </div>
           <div className="grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {campaignData.map((campaign) => (
