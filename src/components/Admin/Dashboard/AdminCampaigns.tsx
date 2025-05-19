@@ -31,9 +31,7 @@ const AdminCampaigns = () => {
   });
 
   const handleDelete = async (id: string) => {
-    console.log("Inside handle Delete");
     mutate(id);
-    console.log("After delete mutate");
   };
 
   if (!campaignData || campaignData.length === 0) {
