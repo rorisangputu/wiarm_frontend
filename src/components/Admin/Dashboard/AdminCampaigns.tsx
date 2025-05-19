@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAppContext } from "../../../contexts/appContext";
 import * as apiClient from "../../../apiClient";
 import Button from "../../Button";
@@ -7,6 +7,17 @@ import { Link } from "react-router-dom";
 
 const AdminCampaigns = () => {
   const { showToast } = useAppContext();
+  const queryClient = useQueryClient();
+  const { mutate } = useMutation({
+    mutationFn: apiClient.deleteCampaign,
+    onSuccess: () => {
+      showToast({ message: "Campaign Deleted", type: "SUCCESS" });
+      queryClient.invalidateQueries({ queryKey: ["getCampaigns"] });
+    },
+    onError: (error: Error) => {
+      showToast({ message: error.message, type: "ERROR" });
+    },
+  });
   const { data: campaignData } = useQuery({
     queryKey: ["getCampaigns"],
     queryFn: async () => {
@@ -19,9 +30,16 @@ const AdminCampaigns = () => {
     },
   });
 
-  if (!campaignData) {
+  const handleDelete = async (id: string) => {
+    console.log("Inside handle Delete");
+    mutate(id);
+    console.log("After delete mutate");
+  };
+
+  if (!campaignData || campaignData.length === 0) {
     return <span>No Campaigns found.</span>;
   }
+
   return (
     <div className="flex flex-col gap-5">
       <Link to={"/admin/new"}>
@@ -37,6 +55,7 @@ const AdminCampaigns = () => {
             date={campaign.date}
             description={campaign.description}
             picture={campaign.image}
+            onDelete={handleDelete}
           />
         ))}
       </div>
