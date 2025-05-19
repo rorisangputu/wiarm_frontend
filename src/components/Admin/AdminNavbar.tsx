@@ -6,7 +6,7 @@ import corn from "../../assets/corn_img.png";
 import { useAppContext } from "../../contexts/appContext";
 
 const adminLinks = [
-  { title: "Add New Campaign", url: "/admin/new-campaign" },
+  { title: "Add New Campaign", url: "/admin/new" },
   { title: "Back to Website", url: "/" },
 ];
 
