@@ -4,15 +4,15 @@ import Button from "../Button";
 const AboutSection = () => {
   return (
     <div className="w-full  py-16 md:py-20">
-      <div className="w-[90%] mx-auto md:h-[80vh] flex flex-col justify-center">
+      <div className="w-[90%] mx-auto md:h-[60vh] lg:h-[70vh] flex flex-col justify-center">
         {/* Flex container with responsive direction */}
-        <div className="flex flex-col-reverse md:flex-row items-center gap-8">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-10 xl:gap-20">
           {/* Image Section */}
           <div className="w-full md:w-1/2">
             <img
               src={farmingWomen}
               alt="Farming Women"
-              className="w-full h-[40vh] md:h-[70vh]  object-cover rounded-lg"
+              className="w-full h-[40vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] object-cover rounded-lg"
             />
           </div>
           {/* Text Section */}
@@ -23,10 +23,10 @@ const AboutSection = () => {
               </h1>
               <hr className="w-12 border-t-2 border-gray-200" />
             </div>
-            <div>
-              <p className="font-medium leading-7 text-3xl mb-3">
-                WiARM is a collective of Black women dedicated to reclaiming our
-                place in agriculture.
+            <div className="font-sans xl:max-w-2xl">
+              <p className="font-extralight leading-7 text-3xl mb-3">
+                <span className="font-medium">WiARM</span> is a collective of
+                Black women dedicated to reclaiming our place in agriculture.
               </p>
               <p className="text-lg font-light leading-7">
                 We believe that land is liberation and that food sovereignty is
