@@ -9,7 +9,7 @@ const CampaignsList = () => {
     queryKey: ["getCampaigns"],
     queryFn: async () => {
       try {
-        return await apiClient.fetchCampaign();
+        return await apiClient.fetchCampaigns();
       } catch (error) {
         showToast({ message: "Couldn't get Campaigns", type: "ERROR" });
         throw error;
@@ -33,7 +33,7 @@ const CampaignsList = () => {
       <div className="w-[90%] mx-auto relative z-10 text-white">
         <div className="flex flex-col gap-10">
           <div className=" flex flex-col items-center md:items-start gap-5">
-            <p className="font-sans text-center md:text-start font-extralight text-lg">
+            <p className="font-sans text-center md:text-start font-medium text-xl">
               Explore our recent campaigns
             </p>
             <hr className="w-20" />
