@@ -3,16 +3,16 @@ import Button from "../Button";
 
 const AboutSection = () => {
   return (
-    <div className="w-full py-16 md:py-20">
-      <div className="w-[90%] mx-auto">
+    <div className="w-full  py-16 md:py-20">
+      <div className="w-[90%] mx-auto md:h-[80vh] flex flex-col justify-center">
         {/* Flex container with responsive direction */}
         <div className="flex flex-col-reverse md:flex-row items-center gap-8">
           {/* Image Section */}
-          <div className=" md:w-1/2">
+          <div className="w-full md:w-1/2">
             <img
               src={farmingWomen}
               alt="Farming Women"
-              className="w-full h-[40vh] md:h-[30vh]  object-cover rounded-lg"
+              className="w-full h-[40vh] md:h-[70vh]  object-cover rounded-lg"
             />
           </div>
           {/* Text Section */}
