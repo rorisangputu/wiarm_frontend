@@ -3,7 +3,7 @@ import HeroButton from "../HeroButton";
 
 const Hero = () => {
   return (
-    <div className="relative w-full h-screen md:h-[55vh] flex items-center justify-center bg-gray-900 text-white">
+    <div className="relative w-full h-screen md:h-[70vh] lg:h-[90vh] flex items-center justify-center bg-gray-900 text-white">
       {/* Background Image */}
       <img
         src={mulch}
