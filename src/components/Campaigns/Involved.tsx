@@ -2,7 +2,7 @@ import action_bg from "../../assets/GetInvolved.png";
 
 const Involved = () => {
   return (
-    <div className="relative w-full h-[70vh] md:h-[40vh] flex justify-center">
+    <div className="relative w-full h-[50vh] md:h-[40vh] flex justify-center">
       <img
         src={action_bg}
         alt="Get involved background"
