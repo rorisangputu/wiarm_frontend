@@ -16,6 +16,7 @@ const NewCampaign = () => {
   });
 
   const handleSave = (campaignFormData: FormData) => {
+    console.log("inside handle save");
     mutate(campaignFormData);
   };
   return (
