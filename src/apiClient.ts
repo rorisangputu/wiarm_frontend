@@ -50,7 +50,7 @@ export const logout = async () => {
   }
 };
 
-export const fetchCampaign = async (): Promise<CampaignType[]> => {
+export const fetchCampaigns = async (): Promise<CampaignType[]> => {
   const response = await fetch(`${API_BASE_URL}/api/campaigns`, {
     credentials: "include",
   });
@@ -73,5 +73,33 @@ export const createCampaign = async (
   if (!response.ok) {
     throw new Error("Failed to add hotel");
   }
+  return response.json();
+};
+
+export const editCampaign = async (campaignDataForm: FormData) => {
+  const response = await fetch(
+    `${API_BASE_URL}/api/campaigns/${campaignDataForm.get("campaignId")}/edit`,
+    {
+      method: "PUT",
+      body: campaignDataForm,
+      credentials: "include",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to update Campaign");
+  }
+
+  return response.json();
+};
+
+export const getCampaignById = async (
+  campaignId: string
+): Promise<{ data: CampaignType }> => {
+  const response = await fetch(`${API_BASE_URL}/api/campaigns/${campaignId}`);
+  if (!response) {
+    throw new Error("Error fetching Campaign");
+  }
+
   return response.json();
 };
