@@ -4,7 +4,7 @@ const EditCampaign = () => {
   const { id } = useParams<{ id: string }>();
 
   return (
-    <div>
+    <div className="py-32">
       <h1 className="text-3xl font-bold">Edit Campaign {id}</h1>
       {/* Add form for editing campaign with ID */}
     </div>
