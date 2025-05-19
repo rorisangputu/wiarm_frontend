@@ -88,7 +88,7 @@ function App() {
                   }
                 />
                 <Route
-                  path="/edit-campaign/:id"
+                  path="/edit/:id"
                   element={
                     <AdminLayout>
                       <EditCampaign />
