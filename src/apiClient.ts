@@ -103,3 +103,16 @@ export const getCampaignById = async (
 
   return response.json();
 };
+
+export const deleteCampaign = async (campaignId: string) => {
+  console.log("Inside delete api client", "campaign Id:", campaignId);
+  const response = await fetch(`${API_BASE_URL}/api/campaigns/${campaignId}`, {
+    method: "DELETE",
+    credentials: "include",
+  });
+  if (!response.ok) {
+    throw new Error("Error deleting Campaign");
+  }
+
+  return "Campaign Deleted";
+};
