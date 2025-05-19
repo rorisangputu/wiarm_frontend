@@ -4,10 +4,10 @@ interface AdminCampaignProps {
   id: string;
   title: string;
   location: string;
-  date: string; // assuming string from API
+  date: string;
   description: string;
   picture: string;
-  //onDelete: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 const AdminCampaignTemp = ({
@@ -17,6 +17,7 @@ const AdminCampaignTemp = ({
   date,
   description,
   picture,
+  onDelete,
 }: AdminCampaignProps) => {
   return (
     <div className="bg-white rounded shadow-md text-black overflow-hidden">
@@ -37,7 +38,12 @@ const AdminCampaignTemp = ({
           >
             Edit
           </Link>
-          <button className="text-red-600 hover:underline">Delete</button>
+          <button
+            className="text-red-600 hover:underline"
+            onClick={() => onDelete(id)}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>
