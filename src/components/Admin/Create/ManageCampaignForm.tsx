@@ -1,6 +1,6 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { useEffect } from "react";
-import AddCampaignForm from "./AddCampaignForm";
+import CampaignForm from "./CampaignForm";
 
 export type CampaignFormData = {
   _id?: string;
@@ -53,7 +53,7 @@ const ManageCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         {/* Reuse your AddCampaignForm here */}
-        <AddCampaignForm />
+        <CampaignForm />
         <button
           type="submit"
           className="bg-blue-500 text-white rounded px-4 py-2 mt-4"
