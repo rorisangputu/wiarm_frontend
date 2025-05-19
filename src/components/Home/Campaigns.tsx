@@ -62,7 +62,7 @@ export default Campaigns;
 
 const campaigns = [
   {
-    id: 1,
+    id: "1",
     title: "Seeds of Resistance",
     location: "Eastern Cape, RSA",
     date: "March 20, 2025",
@@ -71,7 +71,7 @@ const campaigns = [
     picture: women,
   },
   {
-    id: 2,
+    id: "2",
     title: "Harvesting Dignity Mission",
     location: "KwaZulu-Natal",
     date: "May 10, 2025",
@@ -80,7 +80,7 @@ const campaigns = [
     picture: sov,
   },
   {
-    id: 3,
+    id: "3",
     title: "Agri-Education for Liberation",
     location: "Venda, Limpopo",
     date: "March 20, 2025",
