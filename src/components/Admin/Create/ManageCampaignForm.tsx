@@ -8,6 +8,8 @@ export type CampaignFormData = {
   description: string;
   date: string;
   location: string;
+  images: string[];
+  imageFiles: FileList;
 };
 
 type Props = {
