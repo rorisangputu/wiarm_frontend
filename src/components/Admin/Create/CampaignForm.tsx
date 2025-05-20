@@ -1,6 +1,5 @@
 import { useFormContext } from "react-hook-form";
 import { CampaignFormData } from "./ManageCampaignForm";
-import Tiptap from "../TipTap";
 // ✅ Define the input type for the form (not to be confused with FormData API)
 
 const CampaignForm = () => {
@@ -40,16 +39,21 @@ const CampaignForm = () => {
           <span className="text-red-700">{errors.title.message}</span>
         )}
       </label>
-
-      <label htmlFor="">
+      <label htmlFor="" className="flex flex-col mt-5">
         Description
-        <Tiptap />
+        <textarea
+          rows={7}
+          
+          id="title"
+          className="border rounded w-full py-2 px-2 mt-3 font-normal"
+          {...register("description", { required: "This field is required" })}
+        />
         {errors.description && (
           <span className="text-red-700">{errors.description.message}</span>
         )}
       </label>
 
-      <label htmlFor="">
+      <label htmlFor="" className="flex flex-col mt-5">
         Date
         <input
           type="date"
@@ -62,7 +66,7 @@ const CampaignForm = () => {
         )}
       </label>
 
-      <label htmlFor="">
+      <label htmlFor="" className="flex flex-col mt-5">
         Location
         <input
           type="text"
@@ -74,8 +78,8 @@ const CampaignForm = () => {
           <span className="text-red-700">{errors.location.message}</span>
         )}
       </label>
-      <div>
-        <h2 className="text-2xl font-bold mb-3">Images</h2>
+      <div className="flex flex-col mt-5">
+        <h2 className="mb-3">Images</h2>
         <div className="border rounded p-4 flex flex-col gap-4">
           {existingImageUrls && (
             <div className="grid grid-cols-6 gap-4">
@@ -114,9 +118,7 @@ const CampaignForm = () => {
           />
         </div>
         {errors.imageFiles && (
-          <span className="text-red-600 text-sm font-bold">
-            {errors.imageFiles.message}
-          </span>
+          <span className="text-red-700 ">{errors.imageFiles.message}</span>
         )}
       </div>
     </div>
