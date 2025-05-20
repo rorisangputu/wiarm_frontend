@@ -4,9 +4,9 @@ interface templateProps {
   id: string;
   title: string;
   location: string;
-  date: string;
+  date: Date;
   description: string;
-  picture: string;
+  picture: string[];
 }
 const CampaignTemp = ({
   id,
@@ -18,7 +18,7 @@ const CampaignTemp = ({
 }: templateProps) => {
   return (
     <div className="bg-white rounded shadow-md text-black overflow-hidden">
-      <img src={picture} alt={title} className="w-full h-48 object-cover" />
+      <img src={picture[0]} alt={title} className="w-full h-48 object-cover" />
       <div className="p-4 flex flex-col gap-2">
         <h3 className="text-lg md:text-xl font-semibold">{title}</h3>
         <p className="text-sm md:text-md text-gray-600">
