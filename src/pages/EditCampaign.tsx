@@ -38,7 +38,17 @@ const EditCampaign = () => {
       <ManageCampaignForm
         onSave={handleSave}
         isLoading={isPending}
-        campaign={campaign?.data}
+        campaign={
+          campaign?.data && {
+            _id: campaign.data._id,
+            title: campaign.data.title,
+            description: campaign.data.description,
+            date: campaign.data.date,
+            location: campaign.data.location,
+            images: campaign.data.images || [],
+            imageFiles: {} as FileList, // 👈 Needed to satisfy the type
+          }
+        }
       />
     </div>
   );
