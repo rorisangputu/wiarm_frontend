@@ -4,7 +4,7 @@ interface AdminCampaignProps {
   id: string;
   title: string;
   location: string;
-  date: string;
+  date: Date;
   description: string;
   picture: string;
   onDelete: (id: string) => void;
