@@ -1,5 +1,6 @@
 import { useFormContext } from "react-hook-form";
 import { CampaignFormData } from "./ManageCampaignForm";
+import Tiptap from "../TipTap";
 // ✅ Define the input type for the form (not to be confused with FormData API)
 
 const CampaignForm = () => {
@@ -40,14 +41,9 @@ const CampaignForm = () => {
         )}
       </label>
 
-      <label htmlFor="" className="text-gray-700 text-sm font-bold flex-1">
+      <label htmlFor="">
         Description
-        <textarea
-          id="description"
-          rows={10}
-          className="border rounded w-full py-2 px-2 mt-3 font-normal"
-          {...register("description", { required: "This field is required" })}
-        />
+        <Tiptap />
         {errors.description && (
           <span className="text-red-700">{errors.description.message}</span>
         )}
