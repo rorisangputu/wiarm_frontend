@@ -43,6 +43,18 @@ const ManageCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
     formData.append("date", data.date);
     formData.append("location", data.location);
 
+    //For Edit Campaign
+    if (data.images) {
+      data.images.forEach((url, index) => {
+        formData.append(`images[${index}]`, url);
+      });
+    }
+
+    //For Add Campaign
+    Array.from(data.imageFiles).forEach((imageFile) => {
+      formData.append(`imageFiles`, imageFile);
+    });
+
     // Console log FormData contents
     for (const pair of formData.entries()) {
       console.log(`${pair[0]}: ${pair[1]}`);
