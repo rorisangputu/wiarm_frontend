@@ -6,7 +6,7 @@ export type CampaignFormData = {
   _id?: string;
   title: string;
   description: string;
-  date: string;
+  date: Date;
   location: string;
   images: string[];
   imageFiles: FileList;
@@ -27,8 +27,10 @@ const ManageCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
       reset({
         title: campaign.title || "",
         description: campaign.description || "",
-        date: campaign.date?.slice(0, 10) || "",
+        date: campaign.date || "",
         location: campaign.location || "",
+        images: campaign.images || [], // ✅ Add this
+        imageFiles: {} as FileList, // ✅ Add this if needed
       });
     }
   }, [campaign, reset]);
@@ -40,7 +42,7 @@ const ManageCampaignForm = ({ onSave, isLoading, campaign }: Props) => {
     }
     formData.append("title", data.title);
     formData.append("description", data.description);
-    formData.append("date", data.date);
+    formData.append("date", data.date.toISOString().slice(0, 10));
     formData.append("location", data.location);
 
     //For Edit Campaign
