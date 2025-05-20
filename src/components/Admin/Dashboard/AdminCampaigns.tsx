@@ -52,7 +52,7 @@ const AdminCampaigns = () => {
             location={campaign.location}
             date={campaign.date}
             description={campaign.description}
-            picture={campaign.image}
+            picture={campaign.images[0]}
             onDelete={handleDelete}
           />
         ))}
