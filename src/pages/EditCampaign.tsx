@@ -43,7 +43,13 @@ const EditCampaign = () => {
             _id: campaign.data._id,
             title: campaign.data.title,
             description: campaign.data.description,
-            date: campaign.data.date,
+            //Date comes back as Date type in DB so changing it to string
+            date:
+              typeof campaign.data.date === "string"
+                ? (campaign.data.date as string).slice(0, 10)
+                : new Date(campaign.data.date as Date)
+                    .toISOString()
+                    .slice(0, 10),
             location: campaign.data.location,
             images: campaign.data.images || [],
             imageFiles: {} as FileList, // 👈 Needed to satisfy the type
