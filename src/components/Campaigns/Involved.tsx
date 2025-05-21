@@ -2,14 +2,14 @@ import action_bg from "../../assets/GetInvolved.png";
 
 const Involved = () => {
   return (
-    <div className="relative w-full h-[50vh] md:h-[40vh] flex justify-center">
+    <div className="relative w-full h-[60vh] xl:h-[65vh] flex justify-center">
       <img
         src={action_bg}
         alt="Get involved background"
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="w-[90%] mx-auto py-10 relative z-10">
-        <div className="flex flex-col items-center gap-5">
+      <div className="w-[90%] mx-auto py-10 relative z-10 flex justify-center">
+        <div className="flex flex-col items-center justify-center gap-5">
           <div className="flex flex-row items-center gap-5">
             <hr className="w-12 border-slate-300" />
             <h1 className="font-sans text-md text-green-900 font-medium tracking-[0.2em] uppercase">
