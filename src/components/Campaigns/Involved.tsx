@@ -2,7 +2,7 @@ import action_bg from "../../assets/GetInvolved.png";
 
 const Involved = () => {
   return (
-    <div className="relative w-full h-[60vh] xl:h-[65vh] flex justify-center">
+    <div className="relative w-full h-[65vh]  flex justify-center">
       <img
         src={action_bg}
         alt="Get involved background"
@@ -21,7 +21,7 @@ const Involved = () => {
             <h2 className="text-4xl font-medium text-gray-600 leading-10 tracking-tight capitalize">
               Be part of a movement that cultivates change
             </h2>
-            <p className="text-gray-600 font-sans px-5 max-w-2xl">
+            <p className="text-gray-600 leading-[1.2rem] font-sans px-5 max-w-2xl">
               Whether you volunteer, donate, or help us spread the word—your
               support drives real transformation. Join hands with us to protect
               land, uplift communities, and grow a more just food system.
