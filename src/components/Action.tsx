@@ -2,13 +2,13 @@ import action_bg from "../assets/GetInvolved.png";
 
 const Action = () => {
   return (
-    <div className="relative w-full h-[60vh] md:h-[40vh] flex justify-center">
+    <div className="relative w-full h-[60vh] flex justify-center">
       <img
         src={action_bg}
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="w-[90%] mx-auto py-10 relative z-10">
+      <div className="w-[90%] mx-auto flex flex-col items-center justify-center py-10 relative z-10">
         <div className="flex flex-col items-center gap-5">
           <div className="flex flex-row items-center gap-5">
             <hr className="w-12 border-slate-300" />
