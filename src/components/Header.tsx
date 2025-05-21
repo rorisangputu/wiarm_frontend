@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import corn from "../assets/corn_img.png";
 
 const links = [
@@ -13,9 +13,16 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { id } = useParams();
 
   // Define admin pages
-  const adminPaths = ["/admin-signin", "/register", "/api", "/contact"];
+  const adminPaths = [
+    "/admin-signin",
+    "/register",
+    "/api",
+    "/contact",
+    `/campaigns/${id}`,
+  ];
   const isAdminPage = adminPaths.includes(location.pathname);
 
   useEffect(() => {
