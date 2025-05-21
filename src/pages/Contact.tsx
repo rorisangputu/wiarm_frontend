@@ -2,7 +2,7 @@ import contact_bg from "../assets/GetInvolved.png";
 
 const Contact = () => {
   return (
-    <div className="flex flex-col w-full">
+    <div className="flex flex-col w-full py-20">
       {/* Hero Section */}
       <div className="relative w-full h-[50vh] md:h-[40vh] flex justify-center items-center text-white">
         <img
@@ -12,7 +12,7 @@ const Contact = () => {
         />
         <div className="relative z-10 text-center text-green-800">
           <h1 className="text-4xl font-semibold">Contact Us</h1>
-          <p className="mt-2 text-md">We’d love to hear from you!</p>
+          <p className="mt-2 text-md">We&apos;d love to hear from you!</p>
         </div>
       </div>
 
