@@ -14,7 +14,7 @@ const EditCampaign = () => {
     queryFn: () => apiClient.getCampaignById(id as string),
     enabled: !!id,
   });
-  console.log(campaign);
+  //console.log(campaign);
   const { mutate, isPending } = useMutation({
     mutationFn: apiClient.editCampaign,
     onSuccess: async () => {
@@ -33,7 +33,7 @@ const EditCampaign = () => {
 
   return (
     <div className="py-32">
-      <h1 className="text-3xl font-bold">Edit Campaign {id}</h1>
+      <h1 className="text-3xl font-bold">Edit Campaign</h1>
       {/* Add form for editing campaign with ID */}
       <ManageCampaignForm
         onSave={handleSave}
