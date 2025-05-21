@@ -12,6 +12,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import NewCampaign from "./pages/NewCampaign";
 import EditCampaign from "./pages/EditCampaign";
 import AdminSignIn from "./pages/AdminSignIn";
+import ScrollToTop from "./layouts/ScrollToTop";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isLoggedIn } = useAppContext();
@@ -21,6 +22,7 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 function App() {
   return (
     <div>
+      <ScrollToTop />
       <Routes>
         {/* Home */}
         <Route
