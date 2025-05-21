@@ -1,7 +1,8 @@
 import Action from "../components/Action";
+import CampaignsList from "../components/Campaigns/CampaignList";
 import AboutSection from "../components/Home/AboutSection";
-import BlogCTA from "../components/Home/BlogCTA";
-import Campaigns from "../components/Home/Campaigns";
+// import BlogCTA from "../components/Home/BlogCTA";
+// import Campaigns from "../components/Home/Campaigns";
 import Hero from "../components/Home/Hero";
 import MissionValues from "../components/Home/MissionValues";
 import Pillars from "../components/Home/Pillars";
@@ -13,8 +14,8 @@ const Home = () => {
       <AboutSection />
       <MissionValues />
       <Pillars />
-      <Campaigns />
-      <BlogCTA />
+      <CampaignsList />
+      {/* <BlogCTA /> */}
       <Action />
     </div>
   );
