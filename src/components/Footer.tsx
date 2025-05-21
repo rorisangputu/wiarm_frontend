@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="w-full bg-green-900 py-7 text-[#dddddd]">
       <div className="w-[90%] mx-auto flex flex-col justify-between">
         {/* Top Section */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-5">
+        <div className="w-full flex flex-col gap-10 md:gap-5">
           {/* Logo and Contact Info */}
           <div className="flex flex-col gap-3">
             <Link to={"/"}>
@@ -41,7 +41,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="flex flex-col">
               <h1 className="text-md font-sans font-medium tracking-[0.2em] uppercase mb-3 text-white">
                 Socials
               </h1>
@@ -74,42 +74,10 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-
-          {/* Contact Form */}
-          <div className="">
-            <p className="text-xl font-medium font-sans mb-2 text-white">
-              Get In Touch
-            </p>
-            <form className="flex flex-col gap-3">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full sm:w-1/2 p-2 rounded bg-white text-black placeholder-gray-600"
-                />
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full sm:w-1/2 p-2 rounded bg-white text-black placeholder-gray-600"
-                />
-              </div>
-              <textarea
-                placeholder="Your Message"
-                rows={4}
-                className="w-full p-2 rounded bg-white text-black placeholder-gray-600 resize-none"
-              />
-              <button
-                type="submit"
-                className="bg-[#588157] hover:bg-[#47664b] px-4 py-2 rounded text-white text-sm w-fit"
-              >
-                Send
-              </button>
-            </form>
-          </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="w-full flex flex-col items-center mt-6 text-sm pt-4">
+        <div className="w-full flex flex-col items-center text-sm pt-4">
           <p>&copy; 2025 WiARM</p>
           <p>Women in Agriculture Rural Movement</p>
         </div>
