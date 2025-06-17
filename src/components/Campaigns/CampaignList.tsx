@@ -3,6 +3,7 @@ import CampaignTemp from "../CampaignTemp";
 import { useAppContext } from "../../contexts/appContext";
 import { useQuery } from "@tanstack/react-query";
 import * as apiClient from "../../apiClient";
+
 const CampaignsList = () => {
   const { showToast } = useAppContext();
   const { data: campaignData } = useQuery({

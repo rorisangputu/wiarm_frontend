@@ -8,10 +8,9 @@ export type SignInResponse = {
 };
 
 export const validateToken = async () => {
-  const response = await fetch(
-    `${API_BASE_URL}/api/admin_auth/validate-token`,
-    { credentials: "include" }
-  );
+  const response = await fetch(`${API_BASE_URL}/api/auth/user/validate-token`, {
+    credentials: "include",
+  });
 
   if (!response.ok) {
     throw new Error("Invalid Token");
