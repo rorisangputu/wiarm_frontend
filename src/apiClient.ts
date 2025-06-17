@@ -21,7 +21,7 @@ export const validateToken = async () => {
 export const signIn = async (
   formData: SignInFormData
 ): Promise<SignInResponse> => {
-  const response = await fetch(`${API_BASE_URL}/api/admin_auth/login`, {
+  const response = await fetch(`${API_BASE_URL}/api/auth/user/login`, {
     method: "POST",
     credentials: "include",
     headers: {
@@ -77,7 +77,7 @@ export const createCampaign = async (
 
 export const editCampaign = async (campaignDataForm: FormData) => {
   const response = await fetch(
-    `${API_BASE_URL}/api/campaigns/${campaignDataForm.get("campaignId")}/edit`,
+    `${API_BASE_URL}/api/campaigns/${campaignDataForm.get("campaignId")}`,
     {
       method: "PUT",
       body: campaignDataForm,
