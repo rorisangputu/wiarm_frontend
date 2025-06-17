@@ -1,5 +1,5 @@
 import { SignInFormData } from "./pages/AdminSignIn";
-import { CampaignType } from "../../wiarm_backend/src/shared/types";
+import { CampaignType } from "./shared/types";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
